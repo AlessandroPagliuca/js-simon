@@ -46,25 +46,26 @@ function startCountdown(seconds) {
       }
     }, 1000);
 }
-startCountdown(6)
+startCountdown(10)
 
 //verifica se i numeri nseriti in input sono = numGen []
 let btn = document.getElementById('formPush');
-btn.addEventListener('click', (e)=>{
-    console.log(btn)
+btn.addEventListener('submit', (e)=>{
     e.preventDefault()
+    let inputs = document.querySelectorAll('input');
+    for(let i = 0; i < inputs.length; i++){
+        let valueInput = inputs[i].value;
+        if(valueInput == numGen[i]){
+            messageNum.innerText = 'Complimenti !!!';
+            console.log( valueInput,'Complimenti !!!');
     
-    let valueInput = document.getElementById('formPush');
-    let valNum = valueInput.value;
-    
-    for(let i = 0; i < numGen.length; i++){
-        if(valNum !== numGen[i]){
-            console.log( numGen[i],'hai sbagliato');
-    
-        } else if(valNum == numGen[i]){
-            console.log('bravo');
+        } else if(!valueInput == numGen[i]){
+            messageNum.innerText = 'Hai sbagliato :(';
+            console.log(valueInput,'Hai sbagliato :(');
         }
     
     }
-
+    btn.reset();
+    num();
+    startCountdown(20)
 });
