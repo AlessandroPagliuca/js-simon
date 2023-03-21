@@ -24,10 +24,9 @@ function num(){
             numGen.push(randomNum);
         }
         messageNum.innerText = numGen;
-        console.log(messageNum);
         console.log(numGen);    
     
-    }, 1000);
+    }, 3000);
 }
 num();
 
@@ -44,34 +43,28 @@ function startCountdown(seconds) {
         clearInterval(interval);
         console.log('Finish');
       }
-    }, 3000);
+    }, 1000);
 }
-startCountdown(5)
+startCountdown(8)
 
 //verifica se i numeri nseriti in input sono = numGen []
 let btn = document.getElementById('formPush');
 btn.addEventListener('submit', (e)=>{
     e.preventDefault()
+    messageNum.innerText = 'Ecco il tuo risultato:';
     let inputs = document.querySelectorAll('input');
-    console.log(inputs);
-    let allInput = false;
     for(let i = 0; i < inputs.length; i++){
         let valueInput = inputs[i].value;
         if(parseInt(valueInput) == numGen[i]){
-            messageNum.innerText = 'Complimenti !!!';
+            messageNum.innerText += ` ${valueInput} corretto,`;
             console.log( parseInt(valueInput),'Complimenti !!!');
-            allInput = false;
-            console.log(allInput);
-    
-        } else if(parseInt(!valueInput)  == numGen[i]){
-            messageNum.innerText = 'Hai sbagliato :(';
-            console.log(parseInt(valueInput),'Hai sbagliato :(');
-            allInput = true;
-            console.log(allInput);
 
+        } else if(parseInt(valueInput)  !== numGen[i]){
+            messageNum.innerText += ` ${valueInput} errato,`;
+            console.log(parseInt(valueInput),'Hai sbagliato :(');
         }
     }
-    btn.reset();
     num();
     startCountdown(8)
+    btn.reset();
 });
