@@ -38,13 +38,14 @@ function startCountdown(seconds) {
       console.log(counter);
       counter--;
         
-      if (counter < 0 ) {
+      if (counter < 1 ) {
+        messageNum.innerText = 'Inserisci i numeri';
         clearInterval(interval);
-        console.log('Ding!');
+        console.log('Finish');
       }
     }, 1000);
 }
-startCountdown(5)
+startCountdown(6)
 
 let btn = document.getElementById('formPush');
 btn.addEventListener('click', (e)=>{
