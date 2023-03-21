@@ -31,6 +31,7 @@ function num(){
 }
 num();
 
+//inizio countdown num
 function startCountdown(seconds) {
     let counter = seconds;
       
@@ -47,11 +48,23 @@ function startCountdown(seconds) {
 }
 startCountdown(6)
 
+//verifica se i numeri nseriti in input sono = numGen []
 let btn = document.getElementById('formPush');
 btn.addEventListener('click', (e)=>{
+    console.log(btn)
     e.preventDefault()
-
-
-
+    
+    let valueInput = document.getElementById('formPush');
+    let valNum = valueInput.value;
+    
+    for(let i = 0; i < numGen.length; i++){
+        if(valNum !== numGen[i]){
+            console.log( numGen[i],'hai sbagliato');
+    
+        } else if(valNum == numGen[i]){
+            console.log('bravo');
+        }
+    
+    }
 
 });
