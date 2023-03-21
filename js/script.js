@@ -44,28 +44,34 @@ function startCountdown(seconds) {
         clearInterval(interval);
         console.log('Finish');
       }
-    }, 1000);
+    }, 3000);
 }
-startCountdown(10)
+startCountdown(5)
 
 //verifica se i numeri nseriti in input sono = numGen []
 let btn = document.getElementById('formPush');
 btn.addEventListener('submit', (e)=>{
     e.preventDefault()
     let inputs = document.querySelectorAll('input');
+    console.log(inputs);
+    let allInput = false;
     for(let i = 0; i < inputs.length; i++){
         let valueInput = inputs[i].value;
-        if(valueInput == numGen[i]){
+        if(parseInt(valueInput) == numGen[i]){
             messageNum.innerText = 'Complimenti !!!';
-            console.log( valueInput,'Complimenti !!!');
+            console.log( parseInt(valueInput),'Complimenti !!!');
+            allInput = false;
+            console.log(allInput);
     
-        } else if(!valueInput == numGen[i]){
+        } else if(parseInt(!valueInput)  == numGen[i]){
             messageNum.innerText = 'Hai sbagliato :(';
-            console.log(valueInput,'Hai sbagliato :(');
+            console.log(parseInt(valueInput),'Hai sbagliato :(');
+            allInput = true;
+            console.log(allInput);
+
         }
-    
     }
     btn.reset();
     num();
-    startCountdown(20)
+    startCountdown(8)
 });
